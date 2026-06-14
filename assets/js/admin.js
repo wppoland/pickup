@@ -1,10 +1,7 @@
 /**
- * Pickup — admin settings enhancements (progressive, dependency-free).
+ * Pickup — admin settings enhancement (progressive, dependency-free).
  *
- * 1. Inline help: each "?" button toggles an accessible popover. Native Popover
- *    API is used where available; otherwise a small show/hide fallback keeps it
- *    keyboard- and screen-reader-operable via aria-expanded.
- * 2. Repeatable location rows: add/remove without a page reload.
+ * Repeatable location rows: add/remove without a page reload.
  *
  * Loaded with `defer`; degrades gracefully — all settings still save with JS off.
  */
@@ -15,57 +12,6 @@
 
 	if ( ! root ) {
 		return;
-	}
-
-	var supportsPopover =
-		typeof HTMLElement !== 'undefined' &&
-		Object.prototype.hasOwnProperty.call( HTMLElement.prototype, 'popover' );
-
-	/* ---- Inline help popovers ---------------------------------------- */
-
-	function closeAllFallback( except ) {
-		var open = root.querySelectorAll( '.pickup-help[aria-expanded="true"]' );
-		Array.prototype.forEach.call( open, function ( btn ) {
-			if ( btn === except ) {
-				return;
-			}
-			btn.setAttribute( 'aria-expanded', 'false' );
-			var tip = document.getElementById(
-				btn.getAttribute( 'aria-describedby' )
-			);
-			if ( tip ) {
-				tip.hidden = true;
-				tip.classList.remove( 'is-fallback' );
-			}
-		} );
-	}
-
-	if ( ! supportsPopover ) {
-		root.addEventListener( 'click', function ( event ) {
-			var btn = event.target.closest( '.pickup-help' );
-			if ( ! btn ) {
-				closeAllFallback( null );
-				return;
-			}
-			event.preventDefault();
-			var tip = document.getElementById(
-				btn.getAttribute( 'aria-describedby' )
-			);
-			if ( ! tip ) {
-				return;
-			}
-			var isOpen = btn.getAttribute( 'aria-expanded' ) === 'true';
-			closeAllFallback( btn );
-			btn.setAttribute( 'aria-expanded', isOpen ? 'false' : 'true' );
-			tip.hidden = isOpen;
-			tip.classList.toggle( 'is-fallback', ! isOpen );
-		} );
-
-		document.addEventListener( 'keydown', function ( event ) {
-			if ( event.key === 'Escape' ) {
-				closeAllFallback( null );
-			}
-		} );
 	}
 
 	/* ---- Repeatable location rows ------------------------------------ */

@@ -32,8 +32,8 @@ define('PICKUP_URL', plugin_dir_url(__FILE__));
 
 require_once __DIR__ . '/autoload.php';
 
-// Seed default settings on activation so the container/migrator never run against
-// an empty option set, and the admin screen has sane values out of the box.
+// Seed default settings on activation so the plugin never runs against an empty
+// option set, and the admin screen has sane values out of the box.
 register_activation_hook(__FILE__, static function (): void {
     require_once __DIR__ . '/autoload.php';
     Activator::activate();

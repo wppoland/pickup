@@ -21,7 +21,5 @@ final class Activator
             $defaults = require PICKUP_DIR . 'config/defaults.php';
             update_option(SettingsStore::OPTION, $defaults, false);
         }
-
-        update_option('pickup_db_version', VERSION, false);
     }
 }

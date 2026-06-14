@@ -15,4 +15,3 @@ declare(strict_types=1);
 defined('WP_UNINSTALL_PLUGIN') || exit;
 
 delete_option('pickup_settings');
-delete_option('pickup_db_version');

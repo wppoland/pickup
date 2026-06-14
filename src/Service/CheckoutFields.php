@@ -138,8 +138,6 @@ final class CheckoutFields implements HasHooks
         $selLocation = isset($_POST[self::FIELD_LOCATION]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_LOCATION])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- repopulation only; the value is re-validated on submit.
         $selDate     = isset($_POST[self::FIELD_DATE]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_DATE])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- repopulation only.
         $selSlot     = isset($_POST[self::FIELD_SLOT]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_SLOT])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- repopulation only.
-
-        $requireSlot = $this->settings->requireSlot();
         ?>
         <div class="pickup-fields" data-pickup-fields<?php echo $active ? '' : ' hidden'; ?>>
             <h3 class="pickup-fields__title"><?php esc_html_e('Pickup details', 'pickup'); ?></h3>
@@ -175,8 +173,7 @@ final class CheckoutFields implements HasHooks
                 </select>
             </p>
 
-            <?php if ($requireSlot) : ?>
-                <p class="form-row form-row-first pickup-field pickup-field--date">
+            <p class="form-row form-row-first pickup-field pickup-field--date">
                     <label for="<?php echo esc_attr(self::FIELD_DATE); ?>">
                         <?php esc_html_e('Pickup date', 'pickup'); ?>
                         <abbr class="required" title="<?php esc_attr_e('required', 'pickup'); ?>">*</abbr>
@@ -217,7 +214,6 @@ final class CheckoutFields implements HasHooks
                     </select>
                     <span class="pickup-field__status" data-pickup-status></span>
                 </p>
-            <?php endif; ?>
         </div>
         <?php
     }
@@ -244,10 +240,6 @@ final class CheckoutFields implements HasHooks
 
         if ($locationId === '' || null === $this->settings->findLocation($locationId)) {
             wc_add_notice(__('Please choose a valid pickup location.', 'pickup'), 'error');
-            return;
-        }
-
-        if (! $this->settings->requireSlot()) {
             return;
         }
 
@@ -292,14 +284,12 @@ final class CheckoutFields implements HasHooks
         // the location is later renamed or removed.
         $order->update_meta_data('_pickup_location_name', $location['name']);
 
-        if ($this->settings->requireSlot()) {
-            $date = isset($_POST[self::FIELD_DATE]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_DATE])) : '';
-            $slot = isset($_POST[self::FIELD_SLOT]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_SLOT])) : '';
+        $date = isset($_POST[self::FIELD_DATE]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_DATE])) : '';
+        $slot = isset($_POST[self::FIELD_SLOT]) ? sanitize_text_field(wp_unslash((string) $_POST[self::FIELD_SLOT])) : '';
 
-            if ($date !== '' && $slot !== '') {
-                $order->update_meta_data(self::META_DATE, $date);
-                $order->update_meta_data(self::META_SLOT, $slot);
-            }
+        if ($date !== '' && $slot !== '') {
+            $order->update_meta_data(self::META_DATE, $date);
+            $order->update_meta_data(self::META_SLOT, $slot);
         }
     }
 

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-14T20:50:58+00:00\n"
+"POT-Creation-Date: 2026-06-14T22:02:34+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pickup\n"
@@ -43,194 +43,162 @@ msgstr ""
 msgid "Pickup - Local Pickup Scheduling for WooCommerce requires WooCommerce to be active."
 msgstr ""
 
-#: src/Admin/Settings.php:43
+#: src/Admin/Settings.php:40
 msgid "Pickup Scheduling"
 msgstr ""
 
-#: src/Admin/Settings.php:44
+#: src/Admin/Settings.php:41
 #: src/Service/OrderDisplay.php:81
 msgid "Pickup"
 msgstr ""
 
-#: src/Admin/Settings.php:74
-#: src/Admin/Settings.php:244
+#: src/Admin/Settings.php:71
+#: src/Admin/Settings.php:231
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/Settings.php:75
+#: src/Admin/Settings.php:72
 msgid "Remove this item?"
 msgstr ""
 
-#: src/Admin/Settings.php:96
+#: src/Admin/Settings.php:93
 msgid "Pickup settings saved."
 msgstr ""
 
-#: src/Admin/Settings.php:101
+#: src/Admin/Settings.php:98
 msgid "Let customers book a pickup time"
 msgstr ""
 
-#: src/Admin/Settings.php:103
+#: src/Admin/Settings.php:100
 msgid "When an order uses WooCommerce Local Pickup, shoppers choose a location and a time slot at checkout. Define your locations, weekly opening hours, slot length and capacity below."
 msgstr ""
 
-#: src/Admin/Settings.php:112
+#: src/Admin/Settings.php:109
 msgid "General"
+msgstr ""
+
+#: src/Admin/Settings.php:111
+msgid "Slot length sets how often slots repeat (30 means 09:00, 09:30, 10:00…). Capacity is how many orders may book the same location and time before it is shown as full. Lead time is the minimum notice before the earliest bookable slot. Booking horizon is how many days ahead customers may book."
 msgstr ""
 
 #: src/Admin/Settings.php:117
 msgid "Enable pickup scheduling"
 msgstr ""
 
-#: src/Admin/Settings.php:118
-msgid "The master switch. When off, no pickup fields are added at checkout and nothing is enqueued on the storefront."
-msgstr ""
-
-#: src/Admin/Settings.php:123
+#: src/Admin/Settings.php:122
 msgid "Show pickup fields when Local Pickup is selected."
 msgstr ""
 
-#: src/Admin/Settings.php:129
-msgid "Require a time slot"
-msgstr ""
-
-#: src/Admin/Settings.php:130
-msgid "When on, customers must pick a date and time. When off, they only choose a location (useful for walk-in-any-time stores)."
-msgstr ""
-
-#: src/Admin/Settings.php:135
-msgid "Force a date and time selection."
-msgstr ""
-
-#: src/Admin/Settings.php:140
+#: src/Admin/Settings.php:127
 msgid "Slot length (minutes)"
 msgstr ""
 
-#: src/Admin/Settings.php:140
-msgid "How long each bookable slot is. 30 means slots at 09:00, 09:30, 10:00…"
-msgstr ""
-
-#: src/Admin/Settings.php:141
+#: src/Admin/Settings.php:128
 msgid "Capacity per slot"
 msgstr ""
 
-#: src/Admin/Settings.php:141
-msgid "How many orders may book the same location and time slot before it is shown as full."
-msgstr ""
-
-#: src/Admin/Settings.php:142
+#: src/Admin/Settings.php:129
 msgid "Lead time (hours)"
 msgstr ""
 
-#: src/Admin/Settings.php:142
-msgid "Minimum notice before the earliest bookable slot, so staff have time to prepare."
-msgstr ""
-
-#: src/Admin/Settings.php:143
+#: src/Admin/Settings.php:130
 msgid "Booking horizon (days)"
 msgstr ""
 
-#: src/Admin/Settings.php:143
-msgid "How far ahead customers may book. 14 means the next two weeks are available."
-msgstr ""
-
-#: src/Admin/Settings.php:150
+#: src/Admin/Settings.php:137
 msgid "Weekly opening hours"
 msgstr ""
 
-#: src/Admin/Settings.php:152
+#: src/Admin/Settings.php:139
 msgid "Set one or more time windows per day using 24-hour HH:MM. Leave a day blank to close it. Slots are generated inside these windows using the slot length above."
 msgstr ""
 
 #. translators: %s: weekday name.
-#: src/Admin/Settings.php:167
+#: src/Admin/Settings.php:154
 #, php-format
 msgid "%s opening time"
 msgstr ""
 
 #. translators: %s: weekday name.
-#: src/Admin/Settings.php:177
+#: src/Admin/Settings.php:164
 #, php-format
 msgid "%s closing time"
 msgstr ""
 
-#: src/Admin/Settings.php:190
+#: src/Admin/Settings.php:177
 msgid "Pickup locations"
 msgstr ""
 
-#: src/Admin/Settings.php:192
+#: src/Admin/Settings.php:179
 msgid "Add the places customers can collect from. Disable a location to hide it from checkout without losing its details. At least one enabled location is needed for the checkout fields to appear."
 msgstr ""
 
-#: src/Admin/Settings.php:204
+#: src/Admin/Settings.php:191
 msgid "Add location"
 msgstr ""
 
-#: src/Admin/Settings.php:212
+#: src/Admin/Settings.php:199
 msgid "Save pickup settings"
 msgstr ""
 
-#: src/Admin/Settings.php:225
-#: src/Service/CheckoutFields.php:152
+#: src/Admin/Settings.php:212
+#: src/Service/CheckoutFields.php:150
 msgid "Pickup location"
 msgstr ""
 
-#: src/Admin/Settings.php:228
+#: src/Admin/Settings.php:215
 msgid "Name"
 msgstr ""
 
-#: src/Admin/Settings.php:229
+#: src/Admin/Settings.php:216
 msgid "e.g. Downtown store"
 msgstr ""
 
-#: src/Admin/Settings.php:234
+#: src/Admin/Settings.php:221
 msgid "Address"
 msgstr ""
 
-#: src/Admin/Settings.php:235
+#: src/Admin/Settings.php:222
 msgid "Optional"
 msgstr ""
 
-#: src/Admin/Settings.php:241
+#: src/Admin/Settings.php:228
 msgid "Enabled"
 msgstr ""
 
-#: src/Admin/Settings.php:275
-msgid "More information"
-msgstr ""
-
-#: src/Admin/Settings.php:286
+#: src/Admin/Settings.php:259
 msgid "Monday"
 msgstr ""
 
-#: src/Admin/Settings.php:287
+#: src/Admin/Settings.php:260
 msgid "Tuesday"
 msgstr ""
 
-#: src/Admin/Settings.php:288
+#: src/Admin/Settings.php:261
 msgid "Wednesday"
 msgstr ""
 
-#: src/Admin/Settings.php:289
+#: src/Admin/Settings.php:262
 msgid "Thursday"
 msgstr ""
 
-#: src/Admin/Settings.php:290
+#: src/Admin/Settings.php:263
 msgid "Friday"
 msgstr ""
 
-#: src/Admin/Settings.php:291
+#: src/Admin/Settings.php:264
 msgid "Saturday"
 msgstr ""
 
-#: src/Admin/Settings.php:292
+#: src/Admin/Settings.php:265
 msgid "Sunday"
 msgstr ""
 
-#: src/Admin/Settings.php:303
+#: src/Admin/Settings.php:276
 msgid "You do not have permission to do this."
 msgstr ""
 
-#: src/Admin/Settings.php:310
+#: src/Admin/Settings.php:283
 msgid "Security check failed. Please try again."
 msgstr ""
 
@@ -254,52 +222,52 @@ msgstr ""
 msgid "Local pickup is selected but no pickup locations are configured yet. Please contact the store."
 msgstr ""
 
-#: src/Service/CheckoutFields.php:145
+#: src/Service/CheckoutFields.php:143
 #: src/Service/OrderDisplay.php:107
 #: src/Service/OrderDisplay.php:144
 #: src/Service/OrderDisplay.php:152
 msgid "Pickup details"
 msgstr ""
 
-#: src/Service/CheckoutFields.php:146
+#: src/Service/CheckoutFields.php:144
 msgid "Choose where and when you would like to collect your order."
 msgstr ""
 
-#: src/Service/CheckoutFields.php:153
-#: src/Service/CheckoutFields.php:182
-#: src/Service/CheckoutFields.php:200
+#: src/Service/CheckoutFields.php:151
+#: src/Service/CheckoutFields.php:179
+#: src/Service/CheckoutFields.php:197
 msgid "required"
 msgstr ""
 
-#: src/Service/CheckoutFields.php:161
+#: src/Service/CheckoutFields.php:159
 msgid "Select a location…"
 msgstr ""
 
-#: src/Service/CheckoutFields.php:181
+#: src/Service/CheckoutFields.php:178
 msgid "Pickup date"
 msgstr ""
 
-#: src/Service/CheckoutFields.php:199
+#: src/Service/CheckoutFields.php:196
 msgid "Pickup time"
 msgstr ""
 
-#: src/Service/CheckoutFields.php:209
+#: src/Service/CheckoutFields.php:206
 msgid "Select a date first…"
 msgstr ""
 
-#: src/Service/CheckoutFields.php:239
+#: src/Service/CheckoutFields.php:235
 msgid "Your pickup selection could not be verified. Please try again."
 msgstr ""
 
-#: src/Service/CheckoutFields.php:246
+#: src/Service/CheckoutFields.php:242
 msgid "Please choose a valid pickup location."
 msgstr ""
 
-#: src/Service/CheckoutFields.php:258
+#: src/Service/CheckoutFields.php:250
 msgid "Please choose a pickup date and time."
 msgstr ""
 
-#: src/Service/CheckoutFields.php:263
+#: src/Service/CheckoutFields.php:255
 msgid "That pickup time is no longer available. Please pick another."
 msgstr ""
 

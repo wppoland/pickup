@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 use Pickup\Admin\Settings;
 use Pickup\Container;
-use Pickup\Migrator;
 use Pickup\Service\CheckoutFields;
 use Pickup\Service\OrderDisplay;
 use Pickup\Service\SlotCalculator;
@@ -20,8 +19,6 @@ use Pickup\Support\SettingsStore;
 defined('ABSPATH') || exit;
 
 return static function (Container $c): void {
-    $c->singleton(Migrator::class, static fn (): Migrator => new Migrator());
-
     $c->singleton(SettingsStore::class, static fn (): SettingsStore => new SettingsStore());
 
     $c->singleton(SlotCalculator::class, static fn (Container $c): SlotCalculator => new SlotCalculator(

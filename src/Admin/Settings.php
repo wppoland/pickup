@@ -22,9 +22,6 @@ final class Settings implements HasHooks
     private const PAGE  = 'pickup-settings';
     private const NONCE = 'pickup_save_settings';
 
-    /** Incremented to give each inline-help control a unique id/anchor. */
-    private int $helpSeq = 0;
-
     public function __construct(private readonly SettingsStore $settings)
     {
     }
@@ -110,12 +107,14 @@ final class Settings implements HasHooks
 
                 <div class="pickup-card">
                     <h2><?php esc_html_e('General', 'pickup'); ?></h2>
+                    <p class="description">
+                        <?php esc_html_e('Slot length sets how often slots repeat (30 means 09:00, 09:30, 10:00…). Capacity is how many orders may book the same location and time before it is shown as full. Lead time is the minimum notice before the earliest bookable slot. Booking horizon is how many days ahead customers may book.', 'pickup'); ?>
+                    </p>
                     <table class="form-table" role="presentation">
                         <tbody>
                             <tr>
                                 <th scope="row">
                                     <?php esc_html_e('Enable pickup scheduling', 'pickup'); ?>
-                                    <?php $this->help(__('The master switch. When off, no pickup fields are added at checkout and nothing is enqueued on the storefront.', 'pickup')); ?>
                                 </th>
                                 <td>
                                     <label for="pickup_enabled">
@@ -124,23 +123,11 @@ final class Settings implements HasHooks
                                     </label>
                                 </td>
                             </tr>
-                            <tr>
-                                <th scope="row">
-                                    <?php esc_html_e('Require a time slot', 'pickup'); ?>
-                                    <?php $this->help(__('When on, customers must pick a date and time. When off, they only choose a location (useful for walk-in-any-time stores).', 'pickup')); ?>
-                                </th>
-                                <td>
-                                    <label for="pickup_require_slot">
-                                        <input type="checkbox" id="pickup_require_slot" name="require_slot" value="1" <?php checked($s->requireSlot(), true); ?> />
-                                        <?php esc_html_e('Force a date and time selection.', 'pickup'); ?>
-                                    </label>
-                                </td>
-                            </tr>
                             <?php
-                            $this->numberRow('slot_minutes', __('Slot length (minutes)', 'pickup'), $s->slotMinutes(), 5, __('How long each bookable slot is. 30 means slots at 09:00, 09:30, 10:00…', 'pickup'));
-                            $this->numberRow('capacity', __('Capacity per slot', 'pickup'), $s->capacity(), 1, __('How many orders may book the same location and time slot before it is shown as full.', 'pickup'));
-                            $this->numberRow('lead_hours', __('Lead time (hours)', 'pickup'), $s->leadHours(), 0, __('Minimum notice before the earliest bookable slot, so staff have time to prepare.', 'pickup'));
-                            $this->numberRow('horizon_days', __('Booking horizon (days)', 'pickup'), $s->horizonDays(), 1, __('How far ahead customers may book. 14 means the next two weeks are available.', 'pickup'));
+                            $this->numberRow('slot_minutes', __('Slot length (minutes)', 'pickup'), $s->slotMinutes(), 5);
+                            $this->numberRow('capacity', __('Capacity per slot', 'pickup'), $s->capacity(), 1);
+                            $this->numberRow('lead_hours', __('Lead time (hours)', 'pickup'), $s->leadHours(), 0);
+                            $this->numberRow('horizon_days', __('Booking horizon (days)', 'pickup'), $s->horizonDays(), 1);
                             ?>
                         </tbody>
                     </table>
@@ -248,32 +235,18 @@ final class Settings implements HasHooks
         <?php
     }
 
-    private function numberRow(string $key, string $label, int $value, int $min, string $tip): void
+    private function numberRow(string $key, string $label, int $value, int $min): void
     {
         $id = 'pickup_' . $key;
         ?>
         <tr>
             <th scope="row">
                 <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?></label>
-                <?php $this->help($tip); ?>
             </th>
             <td>
                 <input type="number" min="<?php echo esc_attr((string) $min); ?>" step="1" id="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr((string) $value); ?>" class="small-text" />
             </td>
         </tr>
-        <?php
-    }
-
-    /**
-     * Accessible inline-help affordance using the native Popover API, with an
-     * aria-describedby link so screen readers announce the help text.
-     */
-    private function help(string $text): void
-    {
-        $id = 'pickup-help-' . (++$this->helpSeq);
-        ?>
-        <button type="button" class="pickup-help" aria-label="<?php esc_attr_e('More information', 'pickup'); ?>" aria-describedby="<?php echo esc_attr($id); ?>" aria-expanded="false" popovertarget="<?php echo esc_attr($id); ?>">?</button>
-        <span id="<?php echo esc_attr($id); ?>" class="pickup-tip" role="tooltip" popover hidden><?php echo esc_html($text); ?></span>
         <?php
     }
 
@@ -312,7 +285,6 @@ final class Settings implements HasHooks
 
         $settings = [
             'enabled'      => isset($_POST['enabled']),
-            'require_slot' => isset($_POST['require_slot']),
             'slot_minutes' => isset($_POST['slot_minutes']) ? max(5, (int) $_POST['slot_minutes']) : 30,
             'capacity'     => isset($_POST['capacity']) ? max(1, (int) $_POST['capacity']) : 5,
             'lead_hours'   => isset($_POST['lead_hours']) ? max(0, (int) $_POST['lead_hours']) : 2,

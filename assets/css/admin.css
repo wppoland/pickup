@@ -15,8 +15,6 @@
 	--pickup-card-bg: #fff;
 	--pickup-card-border: #dcdcde;
 	--pickup-muted: #646970;
-	--pickup-help-bg: #2c3338;
-	--pickup-help-fg: #fff;
 
 	max-inline-size: 900px;
 }
@@ -51,52 +49,6 @@
 
 .pickup-card h2 {
 	margin-block-start: 0;
-}
-
-/* Inline help affordance. */
-.pickup-help {
-	display: inline-grid;
-	place-items: center;
-	inline-size: 18px;
-	block-size: 18px;
-	margin-inline-start: 6px;
-	padding: 0;
-	font-size: 12px;
-	font-weight: 700;
-	line-height: 1;
-	color: var(--pickup-help-fg);
-	background: var(--pickup-help-bg);
-	border: 0;
-	border-radius: 50%;
-	cursor: help;
-	vertical-align: middle;
-}
-
-.pickup-help:focus-visible {
-	outline: 2px solid var(--pickup-accent);
-	outline-offset: 2px;
-}
-
-.pickup-tip {
-	max-inline-size: 320px;
-	margin: 0;
-	padding: 0.6rem 0.75rem;
-	font-size: 13px;
-	color: var(--pickup-help-fg);
-	background: var(--pickup-help-bg);
-	border: 0;
-	border-radius: var(--pickup-radius-sm);
-}
-
-/* Fallback positioning for browsers without the Popover API. */
-.pickup-tip[hidden] {
-	display: none;
-}
-
-.pickup-tip.is-fallback {
-	position: absolute;
-	z-index: 100;
-	display: block;
 }
 
 /* Weekly windows. */
@@ -154,7 +106,6 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	.pickup-help,
 	.pickup-remove {
 		transition: color 0.15s ease, background-color 0.15s ease;
 	}

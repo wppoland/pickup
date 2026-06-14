@@ -87,24 +87,9 @@ final class SlotCalculator
      */
     private function isFull(string $locationId, string $date, string $slot): bool
     {
-        /**
-         * Filter the capacity for a specific location + date + slot. PRO add-ons
-         * use this to apply per-location or per-day capacity overrides.
-         *
-         * @param int    $capacity   The default store-wide capacity.
-         * @param string $locationId The pickup location id.
-         * @param string $date       The pickup date (Y-m-d).
-         * @param string $slot       The slot start (HH:MM).
-         */
-        $capacity = (int) apply_filters(
-            'pickup/slot_capacity',
-            $this->settings->capacity(),
-            $locationId,
-            $date,
-            $slot,
-        );
+        $capacity = max(1, $this->settings->capacity());
 
-        return $this->bookedCount($locationId, $date, $slot) >= max(1, $capacity);
+        return $this->bookedCount($locationId, $date, $slot) >= $capacity;
     }
 
     /**

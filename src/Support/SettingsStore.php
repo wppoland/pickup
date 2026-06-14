@@ -58,11 +58,6 @@ final class SettingsStore
         return (bool) ($this->all()['enabled'] ?? false);
     }
 
-    public function requireSlot(): bool
-    {
-        return (bool) ($this->all()['require_slot'] ?? true);
-    }
-
     public function slotMinutes(): int
     {
         return max(5, (int) ($this->all()['slot_minutes'] ?? 30));

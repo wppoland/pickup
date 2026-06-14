@@ -10,7 +10,6 @@ Slots are generated from the weekly opening windows you define, using your chose
 - Date and time-slot picker driven by your weekly opening hours.
 - Configurable slot length, per-slot capacity, lead time and booking horizon.
 - Live slot availability — full or past-lead-time slots are hidden automatically.
-- Optional "location only" mode that skips the date and time when not needed.
 - Pickup details shown in the admin order screen, order emails and the customer's order and thank-you pages.
 - Store-timezone aware and self-contained: no custom tables, no external services.
 

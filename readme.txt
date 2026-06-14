@@ -32,7 +32,6 @@ for every other shipping method they stay hidden and are never required.
 * Date + time-slot picker driven by your weekly opening hours.
 * Configurable slot length, per-slot capacity, lead time and booking horizon.
 * Live slot availability — full or past-lead-time slots are hidden automatically.
-* Optional "location only" mode (skip the date/time when not needed).
 * Selection validated server-side and saved to the order.
 * Pickup details shown in the admin order screen, order emails and the customer's
   order/thank-you pages.
@@ -69,10 +68,6 @@ window with a 30-minute slot length offers 09:00, 09:30, 10:00 and so on.
 
 Each slot has a capacity. Once the number of orders booked into a location + date
 + slot reaches that capacity, the slot is no longer offered.
-
-= Can I let customers pick only a location, without a time? =
-
-Yes. Turn off "Require a time slot" on the Pickup settings screen.
 
 = Does it create database tables? =
 

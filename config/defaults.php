@@ -4,7 +4,6 @@
  *
  * Schema:
  *  - enabled:        master switch for the checkout pickup scheduler.
- *  - require_slot:   force customers to pick a date + time slot (vs. location only).
  *  - slot_minutes:   length of each bookable slot, in minutes.
  *  - capacity:       how many orders may book the same location + slot.
  *  - lead_hours:     minimum notice (hours) before the earliest bookable slot.
@@ -24,7 +23,6 @@ defined('ABSPATH') || exit;
 
 return [
     'enabled'      => true,
-    'require_slot' => true,
     'slot_minutes' => 30,
     'capacity'     => 5,
     'lead_hours'   => 2,
