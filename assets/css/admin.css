@@ -1,0 +1,161 @@
+/**
+ * Pickup — admin management screen.
+ *
+ * A themeable layer over the WordPress settings UI. Tokens live under --pickup-*
+ * so the look tunes in one place. Transitions are gated behind
+ * prefers-reduced-motion and colours adapt to the admin scheme via
+ * prefers-color-scheme.
+ */
+
+.pickup-admin {
+	--pickup-accent: #2271b1;
+	--pickup-radius: 10px;
+	--pickup-radius-sm: 6px;
+	--pickup-gap: clamp(1rem, 2vw, 1.5rem);
+	--pickup-card-bg: #fff;
+	--pickup-card-border: #dcdcde;
+	--pickup-muted: #646970;
+	--pickup-help-bg: #2c3338;
+	--pickup-help-fg: #fff;
+
+	max-inline-size: 900px;
+}
+
+.pickup-intro {
+	margin-block: 1rem 1.5rem;
+	padding: clamp(1rem, 2.5vw, 1.5rem);
+	background: var(--pickup-card-bg);
+	border: 1px solid var(--pickup-card-border);
+	border-inline-start: 4px solid var(--pickup-accent);
+	border-radius: var(--pickup-radius);
+}
+
+.pickup-intro h2 {
+	margin: 0 0 0.25rem;
+	font-size: 1.05rem;
+}
+
+.pickup-intro p {
+	margin: 0;
+	max-inline-size: 65ch;
+	color: var(--pickup-muted);
+}
+
+.pickup-card {
+	margin-block-end: var(--pickup-gap);
+	padding: clamp(1rem, 2.5vw, 1.5rem);
+	background: var(--pickup-card-bg);
+	border: 1px solid var(--pickup-card-border);
+	border-radius: var(--pickup-radius);
+}
+
+.pickup-card h2 {
+	margin-block-start: 0;
+}
+
+/* Inline help affordance. */
+.pickup-help {
+	display: inline-grid;
+	place-items: center;
+	inline-size: 18px;
+	block-size: 18px;
+	margin-inline-start: 6px;
+	padding: 0;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--pickup-help-fg);
+	background: var(--pickup-help-bg);
+	border: 0;
+	border-radius: 50%;
+	cursor: help;
+	vertical-align: middle;
+}
+
+.pickup-help:focus-visible {
+	outline: 2px solid var(--pickup-accent);
+	outline-offset: 2px;
+}
+
+.pickup-tip {
+	max-inline-size: 320px;
+	margin: 0;
+	padding: 0.6rem 0.75rem;
+	font-size: 13px;
+	color: var(--pickup-help-fg);
+	background: var(--pickup-help-bg);
+	border: 0;
+	border-radius: var(--pickup-radius-sm);
+}
+
+/* Fallback positioning for browsers without the Popover API. */
+.pickup-tip[hidden] {
+	display: none;
+}
+
+.pickup-tip.is-fallback {
+	position: absolute;
+	z-index: 100;
+	display: block;
+}
+
+/* Weekly windows. */
+.pickup-windows input[type="time"] {
+	min-inline-size: 8rem;
+}
+
+/* Locations. */
+.pickup-location-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem 1.25rem;
+	align-items: flex-end;
+	margin-block-end: 0.75rem;
+	padding: 1rem;
+	border: 1px solid var(--pickup-card-border);
+	border-radius: var(--pickup-radius-sm);
+}
+
+.pickup-location-row__field {
+	margin: 0;
+}
+
+.pickup-location-row__field label {
+	display: block;
+}
+
+.pickup-location-row__field span {
+	display: block;
+	margin-block-end: 2px;
+	font-weight: 600;
+}
+
+.pickup-location-row__field--toggle {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.pickup-remove {
+	color: #b32d2e;
+}
+
+.pickup-remove:hover {
+	color: #8a2424;
+}
+
+/* Dark-mode-aware admin. */
+@media (prefers-color-scheme: dark) {
+	.pickup-admin {
+		--pickup-card-bg: #1e1e1e;
+		--pickup-card-border: #3c434a;
+		--pickup-muted: #a7aaad;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.pickup-help,
+	.pickup-remove {
+		transition: color 0.15s ease, background-color 0.15s ease;
+	}
+}

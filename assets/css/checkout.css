@@ -1,0 +1,57 @@
+/**
+ * Pickup — checkout fields.
+ *
+ * Lightweight styling that inherits the theme's form look. No layout shift: the
+ * block reserves its space and the slot status uses a fixed-height line.
+ */
+
+.pickup-fields {
+	--pickup-accent: #2271b1;
+	--pickup-border: #d5d8dc;
+	--pickup-radius: 10px;
+
+	margin-block: 1.5rem;
+	padding: clamp(1rem, 3vw, 1.5rem);
+	border: 1px solid var(--pickup-border);
+	border-radius: var(--pickup-radius);
+}
+
+.pickup-fields[hidden] {
+	display: none;
+}
+
+.pickup-fields__title {
+	margin-block: 0 0.25rem;
+}
+
+.pickup-fields__intro {
+	margin-block: 0 1rem;
+	opacity: 0.8;
+}
+
+.pickup-fields .pickup-input {
+	inline-size: 100%;
+}
+
+.pickup-field__status {
+	display: block;
+	min-block-size: 1.25em;
+	margin-block-start: 0.25rem;
+	font-size: 0.875em;
+	opacity: 0.85;
+}
+
+.pickup-field__status.is-error {
+	color: #b32d2e;
+	opacity: 1;
+}
+
+.pickup-fields--empty {
+	border-inline-start: 4px solid #dba617;
+}
+
+@media (prefers-color-scheme: dark) {
+	.pickup-fields {
+		--pickup-border: #3c434a;
+	}
+}
